@@ -59,19 +59,19 @@ public class Main {
 
         System.out.println("\n> 10000 Linhas");
 
-        Integer[] bb_set10000 = set1000.clone();
+        Integer[] bb_set10000 = set10000.clone();
         long bb_10000_start = System.nanoTime();
         orderAndProgress.BubbleSort(bb_set10000, 0);
         long bb_10000_end = System.nanoTime();
         long bb_10000_ns = printMetrics("BubbleSort   ", bb_10000_start, bb_10000_end);
 
-        Integer[] insert_set10000 = set1000.clone();
+        Integer[] insert_set10000 = set10000.clone();
         long insert_10000_start = System.nanoTime();
         orderAndProgress.InsertionSort(insert_set10000, 0);
         long insert_10000_end = System.nanoTime();
         long insert_10000_ns = printMetrics("InsertionSort", insert_10000_start, insert_10000_end);
 
-        Integer[] quick_set10000 = set1000.clone();
+        Integer[] quick_set10000 = set10000.clone();
         long quick_10000_start = System.nanoTime();
         orderAndProgress.QuickSort(quick_set10000, 0, quick_set10000.length - 1);
         long quick_10000_end = System.nanoTime();
