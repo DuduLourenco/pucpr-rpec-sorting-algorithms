@@ -37,5 +37,36 @@ public class OrderAndProgress {
         InsertionSort(array, count + 1);
     }
 
-    public void QuickSort(Integer[] array) {}
+
+    public void QuickSort(Integer[] array, int initialIndex, int finalIndex) {
+        if  (initialIndex > array.length - 1) {
+            return;
+        }
+
+        Integer pivot = array[finalIndex];
+        int lastLowestIndex = initialIndex;
+
+        for (int i = initialIndex; i < finalIndex; i++) {
+            Integer current = array[i];
+
+            if (current < pivot) {
+                array[i] = array[lastLowestIndex];
+                array[lastLowestIndex] = current;
+                lastLowestIndex++;
+            }
+        }
+
+        array[finalIndex] = array[lastLowestIndex];
+        array[lastLowestIndex] = pivot;
+
+        if (lastLowestIndex < finalIndex) {
+            //direita
+            QuickSort(array, lastLowestIndex + 1, finalIndex);
+        }
+
+        if(initialIndex < lastLowestIndex) {
+            //esquerda
+            QuickSort(array, initialIndex, lastLowestIndex - 1);
+        }
+    }
 }

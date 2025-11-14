@@ -1,18 +1,12 @@
 import utils.FileReader;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        FileReader fileReader = new FileReader();
-
         section("Aleatório", "aleatorio");
         section("Crescente", "crescente");
         section("Decrescente", "decrescente");
-
-        OrderAndProgress orderAndProgress = new OrderAndProgress();
-
-        Integer[] teste = {7,2,12,8,3};
-
-        orderAndProgress.InsertionSort(teste, 0);
     }
 
     public static void section(String name, String baseFileName) {
@@ -38,6 +32,11 @@ public class Main {
         long insert_100_end = System.nanoTime();
         long insert_100_ns = printMetrics("InsertionSort", insert_100_start, insert_100_end);
 
+        long quick_100_start = System.nanoTime();
+        orderAndProgress.QuickSort(set100, 0, set100.length - 1);
+        long quick_100_end = System.nanoTime();
+        long quick_100_ns = printMetrics("QuickSort", quick_100_start, quick_100_end);
+
         System.out.println("\n> 1000 Linhas");
 
         long bb_1000_start = System.nanoTime();
@@ -50,6 +49,11 @@ public class Main {
         long insert_1000_end = System.nanoTime();
         long insert_1000_ns = printMetrics("InsertionSort", insert_1000_start, insert_1000_end);
 
+        long quick_1000_start = System.nanoTime();
+        orderAndProgress.QuickSort(set1000, 0, set1000.length - 1);
+        long quick_1000_end = System.nanoTime();
+        long quick_1000_ns = printMetrics("QuickSort", quick_1000_start, quick_1000_end);
+
         System.out.println("\n> 10000 Linhas");
 
         long bb_10000_start = System.nanoTime();
@@ -61,6 +65,11 @@ public class Main {
         orderAndProgress.InsertionSort(set10000, 0);
         long insert_10000_end = System.nanoTime();
         long insert_10000_ns = printMetrics("InsertionSort", insert_10000_start, insert_10000_end);
+
+        long quick_10000_start = System.nanoTime();
+        orderAndProgress.QuickSort(set10000, 0, set10000.length - 1);
+        long quick_10000_end = System.nanoTime();
+        long quick_10000_ns = printMetrics("QuickSort", quick_10000_start, quick_10000_end);
 
         System.out.println("---");
     }
