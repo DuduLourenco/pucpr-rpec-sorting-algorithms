@@ -31,7 +31,6 @@ public class OrderAndProgress {
             if (current > picked) {
                 array[i] = picked;
                 array[i + 1] = current;
-                break;
             }
         }
 
