@@ -10,8 +10,7 @@ public class Main {
     }
 
     public static void section(String name, String baseFileName) {
-        System.out.println("Section " + name);
-        System.out.println("Base file name: " + baseFileName);
+        System.out.println("Tipo '" + name + "':");
         FileReader fileReader = new FileReader();
 
         Integer[] set100 = fileReader.readLines(baseFileName + "_100.csv");
@@ -20,7 +19,7 @@ public class Main {
 
         OrderAndProgress orderAndProgress = new OrderAndProgress();
 
-        System.out.println("> 100 Linhas");
+        System.out.println("\n> 100 Linhas");
 
         long bb_100_start = System.nanoTime();
         orderAndProgress.BubbleSort(set100, 0);
@@ -35,7 +34,7 @@ public class Main {
         long quick_100_start = System.nanoTime();
         orderAndProgress.QuickSort(set100, 0, set100.length - 1);
         long quick_100_end = System.nanoTime();
-        long quick_100_ns = printMetrics("QuickSort", quick_100_start, quick_100_end);
+        long quick_100_ns = printMetrics("QuickSort    ", quick_100_start, quick_100_end);
 
         System.out.println("\n> 1000 Linhas");
 
@@ -52,7 +51,7 @@ public class Main {
         long quick_1000_start = System.nanoTime();
         orderAndProgress.QuickSort(set1000, 0, set1000.length - 1);
         long quick_1000_end = System.nanoTime();
-        long quick_1000_ns = printMetrics("QuickSort", quick_1000_start, quick_1000_end);
+        long quick_1000_ns = printMetrics("QuickSort    ", quick_1000_start, quick_1000_end);
 
         System.out.println("\n> 10000 Linhas");
 
@@ -69,17 +68,18 @@ public class Main {
         long quick_10000_start = System.nanoTime();
         orderAndProgress.QuickSort(set10000, 0, set10000.length - 1);
         long quick_10000_end = System.nanoTime();
-        long quick_10000_ns = printMetrics("QuickSort", quick_10000_start, quick_10000_end);
+        long quick_10000_ns = printMetrics("QuickSort    ", quick_10000_start, quick_10000_end);
 
-        System.out.println("---");
+        System.out.println("\n------------------------------------------------------\n");
     }
 
     private static long printMetrics(String label, long startNs, long endNs) {
         long elapsedNs = endNs - startNs;
+        double ms = (double) elapsedNs / 1_000_000;
 
         System.out.printf(
-                "%s -> %d ns\n",
-                label, elapsedNs
+                "%-14s | %12d ns | %10.3f ms%n",
+                label, elapsedNs, ms
         );
 
         return elapsedNs;
