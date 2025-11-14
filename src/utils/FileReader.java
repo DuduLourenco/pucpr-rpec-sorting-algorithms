@@ -6,15 +6,15 @@ import java.io.IOException;
 public class FileReader {
     private final String baseFilePath = "src/inputs/";
 
-    public String[] readLines(String fileName) {
+    public Integer[] readLines(String fileName) {
         String filePath = baseFilePath + fileName;
-        EArrayList<String> lines = new EArrayList<>();
+        EArrayList<Integer> lines = new EArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new java.io.FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (!line.trim().equals("Value")) {
-                    lines.add(line);
+                    lines.add(Integer.parseInt(line));
                 }
             }
         } catch (IOException e) {
@@ -22,6 +22,6 @@ public class FileReader {
             e.printStackTrace();
         }
 
-        return lines.toArray(new String[0]);
+        return lines.toArray(new Integer[0]);
     }
 }

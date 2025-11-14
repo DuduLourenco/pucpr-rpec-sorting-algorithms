@@ -1,5 +1,26 @@
 public class OrderAndProgress {
-    public void BubbleSort(String[] array) {}
-    public void InsertionSort(String[] array) {}
-    public void QuickSort(String[] array) {}
+    public void BubbleSort(Integer[] array, Integer count) {
+        if (count == array.length) {
+            return;
+        }
+
+
+        for (int i = 0; i < array.length - count; i++) {
+            if (i >= array.length - count - 1) {
+                BubbleSort(array, count + 1);
+            } else {
+                Integer current = array[i];
+                Integer next = array[i + 1];
+
+                if (current > next) {
+                    array[i + 1] = current;
+                    array[i] = next;
+                }
+            }
+        }
+    }
+
+    public void InsertionSort(Integer[] array) {}
+
+    public void QuickSort(Integer[] array) {}
 }
