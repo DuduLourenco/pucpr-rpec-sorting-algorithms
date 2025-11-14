@@ -4,7 +4,6 @@ public class OrderAndProgress {
             return;
         }
 
-
         for (int i = 0; i < array.length - count; i++) {
             if (i >= array.length - count - 1) {
                 BubbleSort(array, count + 1);
@@ -20,7 +19,23 @@ public class OrderAndProgress {
         }
     }
 
-    public void InsertionSort(Integer[] array) {}
+    public void InsertionSort(Integer[] array, Integer count) {
+        if (count == array.length - 1) {
+            return;
+        }
+
+        Integer picked = array[count + 1];
+        for (int i = count; i >= 0; i--) {
+            Integer current = array[i];
+
+            if (current > picked) {
+                array[i] = picked;
+                array[i + 1] = current;
+            }
+        }
+
+        InsertionSort(array, count + 1);
+    }
 
     public void QuickSort(Integer[] array) {}
 }
